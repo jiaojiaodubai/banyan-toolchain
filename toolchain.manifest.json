@@ -1,27 +1,27 @@
 {
-  "toolchainRevision": "f35f1e083bb7db631122357c8de8d95679f80133",
+  "toolchainRevision": "54c2618451e00efd806ec4cf6c7cf2c44196feb1",
   "contractRevision": "c26d0884121a870107374936ccbc4e11222b015b18aa45d3bddb3165929d955d",
   "schemaRevision": "zotero-45+csl-0ee62cac6648+cslm-e507b2fb131c",
   "supportedNode": "^22.18.0 || >=24",
   "supportedEslint": ">=9 <11",
   "packages": {
-    "@banyan/core": "0.2.0",
+    "@banyan/core": "0.1.0",
     "@banyan/style-contract": "0.1.0",
-    "eslint-plugin-banyan-style": "0.3.0",
-    "@banyan/style-test-kit": "0.2.0"
+    "eslint-plugin-banyan-style": "0.1.0",
+    "@banyan/style-test-kit": "0.1.0"
   },
   "artifacts": {
     "contractArtifact": "banyan-style-contract-0.1.0.tgz",
-    "coreArtifact": "banyan-core-0.2.0.tgz",
-    "lintArtifact": "eslint-plugin-banyan-style-0.3.0.tgz",
-    "testKitArtifact": "banyan-style-test-kit-0.2.0.tgz",
+    "coreArtifact": "banyan-core-0.1.0.tgz",
+    "lintArtifact": "eslint-plugin-banyan-style-0.1.0.tgz",
+    "testKitArtifact": "banyan-style-test-kit-0.1.0.tgz",
     "lintBundle": "eslint-plugin-banyan-style.mjs",
     "lintMetadata": "eslint-plugin-banyan-style.build.json",
-    "contractArtifactSha256": "fd1870f39431f337bb28b0b9bb95d50ed14fc89d393d895d4bcfcf325a29f9b6",
-    "coreArtifactSha256": "b707d5c272a272cc41170525d8a60f6a8ba70189e831987d96b4c4656f4e020a",
-    "lintArtifactSha256": "26fb2df83834b08c726218bd74ff2d71c7ef0b38b4312d69d8a679005e20ed76",
-    "testKitArtifactSha256": "c9c07dc624aaa846b9a56fa2f59b3bc61d91ad938adca82bbfeb63f8c79ba6e8",
-    "lintBundleSha256": "6de1f54d3ad7b29455856753bef39b49929a69af17d55271976e40602efcd998",
-    "lintMetadataSha256": "1e7d41aad1b51cec542d79c0fa64cee8c433102c8ca77cf37631c0ccc9df4372"
+    "contractArtifactSha256": "efcc27119e0fb658acf39f34370913c6b0a535a6d306e4465837a550a22d3e76",
+    "coreArtifactSha256": "3792b76c541cf552a9c630da3f6ecce020628a24ba1dcdeb27da2dce0c7482ca",
+    "lintArtifactSha256": "042209b878221f3e1ef742d600bfd48362bd4a502f5343899b30ea60da60e6c6",
+    "testKitArtifactSha256": "89b27fd056df15f092c85df83293fdf183626fc1ccfe2e1cf3486939c858ec57",
+    "lintBundleSha256": "2f8127215af342738550d0f4a2d38130c53a95ba179de6552d17a6a5cff2e6ad",
+    "lintMetadataSha256": "cd8e8be592a729f8799b15be7c2747bfb47efd7d69a808a33df803e7d4f688e2"
   }
 }

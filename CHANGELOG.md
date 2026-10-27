@@ -27,7 +27,7 @@ removing one is a breaking change even while the packages are private, because
 fixtures, locks and stored reports keep the string. Severity and English prose
 are not part of that contract; the identifier is.
 
-## PENDING — 2026-10-27
+## 54c2618 — 2026-10-27
 
 The first toolchain revision and public release. The four distributed packages
 are all 0.1.0: `@banyan/core`, `@banyan/style-contract`,
