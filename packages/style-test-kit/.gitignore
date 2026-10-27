@@ -1,0 +1,10 @@
+/internal/
+node_modules/
+*.tsbuildinfo
+# pnpm may fall back to a store inside the package (offline installs)
+.pnpm-store/
+coverage/
+*.log
+.env
+.env.*
+!.env.example

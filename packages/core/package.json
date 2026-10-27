@@ -1,0 +1,110 @@
+{
+  "name": "@banyan/core",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "Host-agnostic Banyan Style runtime core",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiaojiaodubai/banyan-toolchain.git",
+    "directory": "packages/core"
+  },
+  "license": "AGPL-3.0-or-later",
+  "files": [
+    "dist",
+    "src/types"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./types/*": {
+      "types": "./dist/types/*.d.ts"
+    },
+    "./host": {
+      "types": "./dist/host.d.ts",
+      "import": "./dist/host.js"
+    },
+    "./messages": {
+      "types": "./dist/messages.d.ts",
+      "import": "./dist/messages.js"
+    },
+    "./sandbox/*": {
+      "types": "./dist/sandbox/*.d.ts",
+      "import": "./dist/sandbox/*.js"
+    },
+    "./schema": {
+      "types": "./dist/schema/index.d.ts",
+      "import": "./dist/schema/index.js"
+    },
+    "./schema/*": {
+      "types": "./dist/schema/*.d.ts",
+      "import": "./dist/schema/*.js"
+    },
+    "./items/*": {
+      "types": "./dist/items/*.d.ts",
+      "import": "./dist/items/*.js"
+    },
+    "./output/*": {
+      "types": "./dist/output/*.d.ts",
+      "import": "./dist/output/*.js"
+    },
+    "./richText/*": {
+      "types": "./dist/richText/*.d.ts",
+      "import": "./dist/richText/*.js"
+    },
+    "./units/*": {
+      "types": "./dist/units/*.d.ts",
+      "import": "./dist/units/*.js"
+    },
+    "./validation/*": {
+      "types": "./dist/validation/*.d.ts",
+      "import": "./dist/validation/*.js"
+    },
+    "./schema/zotero-schema.json": "./dist/schema/zotero-schema.json",
+    "./schema/csl-schema.json": "./dist/schema/csl-schema.json"
+  },
+  "scripts": {
+    "build": "node scripts/clean-dist.mjs && tsc -p tsconfig.build.json && node scripts/copy-type-declarations.mjs && node scripts/copy-schema-json.mjs && node scripts/fix-esm-extensions.mjs && pnpm typecheck:tests && pnpm typecheck:consumer",
+    "check:dist": "pnpm build && node scripts/check-dist.mjs",
+    "check:debt": "node scripts/check-debt.mjs",
+    "check:docs": "node scripts/check-contract-docs.mjs",
+    "gen:schema": "node --import tsx scripts/genZoteroSchema.ts && node --import tsx scripts/genCslSchema.ts && node --import tsx scripts/genStyleContractFacts.mjs",
+    "check:schema-facts": "node --import tsx scripts/genStyleContractFacts.mjs --check",
+    "typecheck": "tsc --noEmit",
+    "typecheck:tests": "tsc --noEmit -p tests/tsconfig.json",
+    "typecheck:consumer": "tsc -p dev/node16-consumer/tsconfig.json",
+    "test": "pnpm test:node && pnpm test:contract",
+    "test:node": "node --import tsx ./node_modules/mocha/bin/mocha.js --timeout 10000 \"tests/**/*.test.ts\"",
+    "coverage": "c8 pnpm test",
+    "fuzz": "node --import tsx scripts/fuzz.mjs",
+    "bench": "node --import tsx scripts/bench.mjs",
+    "test:contract": "node --import tsx ./node_modules/mocha/bin/mocha.js --timeout 10000 \"dev/node-host/*.test.ts\"",
+    "lint:fix": "prettier --write . && eslint src scripts tests dev",
+    "lint:check": "prettier --check . && eslint src scripts tests dev && pnpm typecheck && pnpm typecheck:tests && pnpm check:debt && pnpm check:docs"
+  },
+  "dependencies": {
+    "@banyan/style-contract": "workspace:*"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/chai": "^5.2.3",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^26.6.5",
+    "@zotero/utilities": "github:zotero/utilities",
+    "c8": "^12.0.0",
+    "chai": "^6.3.0",
+    "csl-schema": "github:citation-style-language/schema",
+    "eslint": "^10.13.0",
+    "fast-check": "^4.10.2",
+    "linkedom": "^0.18.14",
+    "mocha": "^12.0.3",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.0",
+    "zotero-schema": "github:zotero/zotero-schema"
+  },
+  "packageManager": "pnpm@10.24.0"
+}

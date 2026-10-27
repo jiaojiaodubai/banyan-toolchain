@@ -1,0 +1,373 @@
+{
+  "diagnostics": [],
+  "result": {
+    "bibliography": [
+      {
+        "content": {
+          "marks": [],
+          "text": "[1]\t张伟，李秀英. 石墨烯量子点的可控合成及其发光性质研究[J]. Acta Physica Sinica，72（6）：1023-1031. https://example.org/articles/graphene-2023. DOI：https://doi.org/10.7498/aps.72.20230101."
+        },
+        "id": "1",
+        "type": "bibliography-entry"
+      },
+      {
+        "content": {
+          "marks": [],
+          "text": "[2]\t王 小. 多语言文献的引用实践[M]. Smith J Trans.//文献学进展. [S.l.]：[s.n.]，2022：45-62."
+        },
+        "id": "3",
+        "type": "bibliography-entry"
+      },
+      {
+        "content": {
+          "marks": [],
+          "text": "[3]\t中国科学院计算技术研究所. 量子计算导论[M]. 2. 北京：高等教育出版社，2021."
+        },
+        "id": "2",
+        "type": "bibliography-entry"
+      },
+      {
+        "content": {
+          "marks": [],
+          "text": "[4]\t陈 志. 一种基于石墨烯的传感器制备方法：ZL201910123456.7[P]. 2019-11-05."
+        },
+        "id": "6",
+        "type": "bibliography-entry"
+      },
+      {
+        "content": {
+          "marks": [],
+          "text": "[5]\t赵 敏，钱 国，孙 丽. 面向开放获取的机构知识库建设[C]//第十二届中国数字图书馆建设与发展研讨会，2020：210-215."
+        },
+        "id": "5",
+        "type": "bibliography-entry"
+      },
+      {
+        "content": {
+          "marks": [],
+          "text": "[6]\t中国科研诚信建设课题组. 2025年中国科研诚信建设报告：REP-2025-001[R]. 2025-03-01."
+        },
+        "id": "7",
+        "type": "bibliography-entry"
+      }
+    ],
+    "citations": [
+      {
+        "content": {
+          "marks": [
+            {
+              "end": 5,
+              "start": 0,
+              "type": "script",
+              "value": "superscript"
+            },
+            {
+              "end": 2,
+              "start": 1,
+              "type": "link",
+              "value": "banyan://entry/1"
+            },
+            {
+              "end": 4,
+              "start": 3,
+              "type": "link",
+              "value": "banyan://entry/3"
+            }
+          ],
+          "text": "[1-2]"
+        },
+        "id": "citation-1",
+        "source": {
+          "cites": [
+            {
+              "item": {
+                "DOI": "10.7498/aps.72.20230101",
+                "ISSN": "1000-3290",
+                "creators": [
+                  {
+                    "creatorType": "author",
+                    "firstName": "伟",
+                    "lastName": "张"
+                  },
+                  {
+                    "creatorType": "author",
+                    "firstName": "秀英",
+                    "lastName": "李"
+                  }
+                ],
+                "date": "2023-06-15",
+                "extra": {},
+                "firstCreator": "⁨张 and 李⁩",
+                "id": "1",
+                "issue": "6",
+                "itemType": "journalArticle",
+                "journalAbbreviation": "Acta Physica Sinica",
+                "language": "zh-CN",
+                "pages": "1023-1031",
+                "publicationTitle": "物理学报",
+                "rights": "© 2023 物理学报",
+                "tags": [
+                  "石墨烯",
+                  "量子点"
+                ],
+                "title": "石墨烯量子点的可控合成及其发光性质研究",
+                "url": "https://example.org/articles/graphene-2023",
+                "volume": "72",
+                "year": "2023",
+                "z:uri": "#item_1"
+              },
+              "params": {
+                "locator": "1025"
+              }
+            },
+            {
+              "item": {
+                "ISBN": "978-7-301-23456-7",
+                "bookTitle": "文献学进展",
+                "creators": [
+                  {
+                    "creatorType": "author",
+                    "firstName": "小明",
+                    "lastName": "王",
+                    "role": "主编"
+                  },
+                  {
+                    "creatorType": "translator",
+                    "firstName": "John",
+                    "lastName": "Smith"
+                  }
+                ],
+                "date": "2022",
+                "extra": {
+                  "creators-ext": "{\"creatorType\":\"author\",\"lastName\":\"王\",\"firstName\":\"小明\",\"role\":\"主编\"}",
+                  "language": "zh-CN"
+                },
+                "firstCreator": "王",
+                "id": "3",
+                "itemType": "bookSection",
+                "pages": "45-62",
+                "publicationTitle": "文献学进展",
+                "tags": [],
+                "title": "多语言文献的引用实践",
+                "year": "2022",
+                "z:uri": "#item_3"
+              },
+              "params": {}
+            }
+          ],
+          "params": {}
+        },
+        "type": "intext-citation"
+      },
+      {
+        "content": {
+          "marks": [
+            {
+              "end": 3,
+              "start": 0,
+              "type": "script",
+              "value": "superscript"
+            },
+            {
+              "end": 2,
+              "start": 1,
+              "type": "link",
+              "value": "banyan://entry/2"
+            }
+          ],
+          "text": "[3]"
+        },
+        "id": "citation-2",
+        "source": {
+          "cites": [
+            {
+              "item": {
+                "ISBN": "978-7-04-055123-4",
+                "creators": [
+                  {
+                    "creatorType": "author",
+                    "name": "中国科学院计算技术研究所"
+                  }
+                ],
+                "date": "2021",
+                "edition": "2",
+                "extra": {},
+                "firstCreator": "中国科学院计算技术研究所",
+                "id": "2",
+                "itemType": "book",
+                "place": "北京",
+                "publisher": "高等教育出版社",
+                "series": "信息科学技术学术丛书",
+                "seriesNumber": "7-101",
+                "tags": [],
+                "title": "量子计算导论",
+                "year": "2021",
+                "z:uri": "#item_2"
+              },
+              "params": {}
+            }
+          ],
+          "params": {
+            "locator": "第 3 章"
+          }
+        },
+        "type": "intext-citation"
+      },
+      {
+        "content": {
+          "marks": [
+            {
+              "end": 3,
+              "start": 0,
+              "type": "script",
+              "value": "superscript"
+            },
+            {
+              "end": 2,
+              "start": 1,
+              "type": "link",
+              "value": "banyan://entry/6"
+            }
+          ],
+          "text": "[4]"
+        },
+        "id": "citation-3",
+        "source": {
+          "cites": [
+            {
+              "item": {
+                "accessDate": "2024-01-12",
+                "applicationNumber": "CN201910123456.7",
+                "assignee": "某科技研究院",
+                "country": "中国",
+                "creators": [
+                  {
+                    "creatorType": "inventor",
+                    "firstName": "志远",
+                    "lastName": "陈"
+                  }
+                ],
+                "date": "2019-11-05",
+                "extra": {},
+                "firstCreator": "陈",
+                "id": "6",
+                "issueDate": "2019-11-05",
+                "itemType": "patent",
+                "number": "ZL201910123456.7",
+                "patentNumber": "ZL201910123456.7",
+                "tags": [],
+                "title": "一种基于石墨烯的传感器制备方法",
+                "year": "2019",
+                "z:uri": "#item_6"
+              },
+              "params": {}
+            }
+          ],
+          "params": {}
+        },
+        "type": "intext-citation"
+      },
+      {
+        "content": {
+          "marks": [
+            {
+              "end": 5,
+              "start": 0,
+              "type": "script",
+              "value": "superscript"
+            },
+            {
+              "end": 2,
+              "start": 1,
+              "type": "link",
+              "value": "banyan://entry/5"
+            },
+            {
+              "end": 4,
+              "start": 3,
+              "type": "link",
+              "value": "banyan://entry/7"
+            }
+          ],
+          "text": "[5-6]"
+        },
+        "id": "citation-4",
+        "source": {
+          "cites": [
+            {
+              "item": {
+                "conferenceName": "第十二届中国数字图书馆建设与发展研讨会",
+                "creators": [
+                  {
+                    "creatorType": "author",
+                    "firstName": "敏",
+                    "lastName": "赵"
+                  },
+                  {
+                    "creatorType": "author",
+                    "firstName": "国强",
+                    "lastName": "钱"
+                  },
+                  {
+                    "creatorType": "author",
+                    "firstName": "丽",
+                    "lastName": "孙"
+                  }
+                ],
+                "date": "2020-08",
+                "extra": {},
+                "firstCreator": "赵 et al.",
+                "id": "5",
+                "issue": "C1",
+                "itemType": "conferencePaper",
+                "pages": "210-215",
+                "proceedingsTitle": "会议论文集",
+                "publicationTitle": "会议论文集",
+                "tags": [],
+                "title": "面向开放获取的机构知识库建设",
+                "year": "2020",
+                "z:uri": "#item_5"
+              },
+              "params": {}
+            },
+            {
+              "item": {
+                "archiveLocation": "国家科技图书文献中心档案部",
+                "callNumber": "G322.5",
+                "creators": [
+                  {
+                    "creatorType": "author",
+                    "name": "中国科研诚信建设课题组"
+                  }
+                ],
+                "date": "2025-03",
+                "extra": {},
+                "firstCreator": "中国科研诚信建设课题组",
+                "id": "7",
+                "institution": "中国科学院文献情报中心",
+                "itemType": "report",
+                "number": "REP-2025-001",
+                "publisher": "中国科学院文献情报中心",
+                "reportNumber": "REP-2025-001",
+                "reportType": "年度报告",
+                "tags": [],
+                "title": "2025年中国科研诚信建设报告",
+                "type": "年度报告",
+                "year": "2025",
+                "z:uri": "#item_7"
+              },
+              "params": {}
+            }
+          ],
+          "params": {}
+        },
+        "type": "intext-citation"
+      }
+    ]
+  },
+  "style": {
+    "citationType": "intext-citation",
+    "id": "gb-t-7714-2025-numeric",
+    "title": "GB/T 7714-2025 (Numeric)"
+  }
+}

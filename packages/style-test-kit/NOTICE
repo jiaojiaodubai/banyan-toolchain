@@ -1,0 +1,30 @@
+# NOTICE
+
+Banyan Style TestKit
+Copyright (C) 2026 jiaojiaodubai and contributors
+
+This project is licensed under the GNU Affero General Public License v3.0 or
+later. See [LICENSE](LICENSE).
+
+## Zotero-derived material
+
+The Zotero RDF namespace set, field-routing table, parser/serializer and item
+conversion logic are transcribed or organized from Zotero's "Zotero RDF"
+translator and related Zotero source code. Zotero is licensed under
+AGPL-3.0-or-later:
+
+- <https://github.com/zotero/zotero>
+- <https://github.com/zotero/translators>
+
+## Bundled style fixture
+
+`fixtures/styles/gb-t-7714-2025-numeric.js` is a Banyan preset style authored
+by jiaojiaodubai and declared MIT in its `INFO` block. It is bundled from the
+plugin preset with a local date-formatting fix (UTC date parts instead of
+`Date#toString()`) so the end-to-end snapshot does not depend on the host
+timezone. It is test data, not part of the runtime.
+
+## Runtime dependencies
+
+- `@banyan/core` — AGPL-3.0-or-later
+- `linkedom` — ISC

@@ -1,0 +1,13 @@
+# 快照是渲染结果（数据），必须排除在 prettier 之外，否则 --check 会因
+# 格式化而失败。fixtures/snapshots 由 CLI 生成，勿手工编辑。
+fixtures/snapshots/**
+
+# 手工编写的 RDF 文档：格式化工具不理解 RDF/XML 的语义，排空行与缩进即
+# 文档布局，交给生成脚本（genFixtures）或人工维护。
+fixtures/aliases.rdf
+
+# 第三方 preset 样式：保持与上游逐字节一致，避免格式化噪声。
+fixtures/styles/gb-t-7714-2025-numeric.js
+
+# 锁文件格式由 pnpm 拥有；prettier 只会在 install 后与其互相改写。
+pnpm-lock.yaml

@@ -1,0 +1,34 @@
+{
+  "contexts": [
+    {
+      "id": "citation-1",
+      "cites": [
+        {
+          "item": "MULTI001",
+          "params": {
+            "locator": "12"
+          }
+        }
+      ]
+    },
+    {
+      "id": "citation-2",
+      "cites": [
+        {
+          "item": "MULTI002"
+        },
+        {
+          "item": "MULTI003"
+        }
+      ]
+    },
+    {
+      "id": "citation-3",
+      "cites": [
+        {
+          "item": "MULTI004"
+        }
+      ]
+    }
+  ]
+}

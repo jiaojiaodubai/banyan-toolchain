@@ -1,0 +1,159 @@
+{
+  "items": [
+    {
+      "id": "ITEM0001",
+      "itemType": "journalArticle",
+      "title": "石墨烯量子点的可控合成及其发光性质研究",
+      "date": "2023-06-15",
+      "publicationTitle": "物理学报",
+      "journalAbbreviation": "Acta Physica Sinica",
+      "volume": "72",
+      "issue": "6",
+      "pages": "1023-1031",
+      "rights": "© 2023 物理学报",
+      "ISSN": "1000-3290",
+      "DOI": "10.7498/aps.72.20230101",
+      "language": "zh-CN",
+      "url": "https://example.org/articles/graphene-2023",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "张",
+          "firstName": "伟"
+        },
+        {
+          "creatorType": "author",
+          "lastName": "李",
+          "firstName": "秀英"
+        }
+      ],
+      "tags": ["石墨烯", "量子点"]
+    },
+    {
+      "id": "ITEM0002",
+      "itemType": "book",
+      "title": "量子计算导论",
+      "date": "2021",
+      "edition": "2",
+      "ISBN": "978-7-04-055123-4",
+      "series": "信息科学技术学术丛书",
+      "seriesNumber": "7-101",
+      "publisher": "高等教育出版社",
+      "place": "北京",
+      "creators": [
+        {
+          "creatorType": "author",
+          "name": "中国科学院计算技术研究所"
+        }
+      ]
+    },
+    {
+      "id": "ITEM0003",
+      "itemType": "bookSection",
+      "title": "多语言文献的引用实践",
+      "date": "2022",
+      "bookTitle": "文献学进展",
+      "pages": "45-62",
+      "ISBN": "978-7-301-23456-7",
+      "extra": {
+        "language": "zh-CN",
+        "creators-ext": "{\"creatorType\":\"author\",\"lastName\":\"王\",\"firstName\":\"小明\",\"role\":\"主编\"}"
+      },
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "王",
+          "firstName": "小明"
+        },
+        {
+          "creatorType": "translator",
+          "lastName": "Smith",
+          "firstName": "John"
+        }
+      ]
+    },
+    {
+      "id": "ITEM0004",
+      "itemType": "bookSection",
+      "title": "Citing multilingual literature in practice",
+      "date": "2022",
+      "bookTitle": "Advances in Bibliography",
+      "pages": "45-62",
+      "ISBN": "978-7-301-23456-7",
+      "extra": {
+        "language": "en"
+      },
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Wang",
+          "firstName": "Xiaoming"
+        }
+      ]
+    },
+    {
+      "id": "ITEM0005",
+      "itemType": "conferencePaper",
+      "title": "面向开放获取的机构知识库建设",
+      "date": "2020-08",
+      "proceedingsTitle": "会议论文集",
+      "issue": "C1",
+      "pages": "210-215",
+      "abstractNote": "本文讨论了机构知识库的建设路径与开放获取政策的关系。",
+      "conferenceName": "第十二届中国数字图书馆建设与发展研讨会",
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "赵",
+          "firstName": "敏"
+        },
+        {
+          "creatorType": "author",
+          "lastName": "钱",
+          "firstName": "国强"
+        },
+        {
+          "creatorType": "author",
+          "lastName": "孙",
+          "firstName": "丽"
+        }
+      ]
+    },
+    {
+      "id": "ITEM0006",
+      "itemType": "patent",
+      "title": "一种基于石墨烯的传感器制备方法",
+      "issueDate": "2019-11-05",
+      "accessDate": "2024-01-12",
+      "patentNumber": "ZL201910123456.7",
+      "assignee": "某科技研究院",
+      "applicationNumber": "CN201910123456.7",
+      "country": "中国",
+      "creators": [
+        {
+          "creatorType": "inventor",
+          "lastName": "陈",
+          "firstName": "志远"
+        }
+      ]
+    },
+    {
+      "id": "ITEM0007",
+      "itemType": "report",
+      "title": "2025年中国科研诚信建设报告",
+      "date": "2025-03",
+      "reportType": "年度报告",
+      "reportNumber": "REP-2025-001",
+      "institution": "中国科学院文献情报中心",
+      "archiveLocation": "国家科技图书文献中心档案部",
+      "callNumber": "G322.5",
+      "creators": [
+        {
+          "creatorType": "author",
+          "name": "中国科研诚信建设课题组"
+        }
+      ]
+    }
+  ],
+  "multilingual": [["ITEM0003", "ITEM0004"]]
+}

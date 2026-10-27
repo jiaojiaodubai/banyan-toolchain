@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    // Production code is checked with both; hand-built fixtures index arrays
+    // and partial items freely, and forcing assertions there buys nothing.
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false
+  },
+  "include": ["./**/*.ts", "../dev/node-host/**/*.ts"]
+}

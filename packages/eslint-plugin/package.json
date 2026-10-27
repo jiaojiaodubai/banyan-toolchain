@@ -1,0 +1,64 @@
+{
+  "name": "eslint-plugin-banyan-style",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "ESLint rules and shared flat-config factory for Banyan style scripts",
+  "license": "AGPL-3.0-or-later",
+  "author": "jiaojiaodubai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiaojiaodubai/banyan-toolchain.git",
+    "directory": "packages/eslint-plugin"
+  },
+  "homepage": "https://github.com/jiaojiaodubai/banyan-toolchain/tree/main/packages/eslint-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/jiaojiaodubai/banyan-toolchain/issues"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "banyan",
+    "citation-style"
+  ],
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "packageManager": "pnpm@10.24.0",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/eslint-plugin-banyan-style.d.ts",
+      "import": "./dist/eslint-plugin-banyan-style.mjs"
+    },
+    "./globals": {
+      "types": "./dist/eslint-style-utils-globals.d.ts",
+      "import": "./dist/eslint-style-utils-globals.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "eslint": ">=9 <11"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test test/rules.test.mjs test/config.test.mjs test/globals.test.mjs",
+    "lint": "prettier --check . && eslint .",
+    "lint:check": "prettier --check . && eslint .",
+    "lint:fix": "prettier --write . && eslint . --fix",
+    "pack:check": "npm pack --dry-run",
+    "prepack": "node build.mjs"
+  },
+  "devDependencies": {
+    "@banyan/style-contract": "workspace:*",
+    "@eslint/js": "^9.39.2",
+    "esbuild": "^0.25.0",
+    "eslint": "^9.39.2",
+    "prettier": "^3.9.10"
+  }
+}

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  A hand-written document in the exact shape Zotero's "Zotero RDF" translator
+  exports (verified against Zotero's serializer and its test data): typed node
+  elements instead of rdf:Description + rdf:type, rdf:Seq/rdf:li creator lists,
+  blank-node containers, publishers and conferences, `urn:issn:` container
+  URIs, and no `z:key` (Zotero does not write one). It also carries what a real
+  export carries but the testkit deliberately does not feed to styles: a child
+  attachment, a note and a collection.
+
+  Tests: test/rdf.test.ts ("Zotero export shape"), test/library.test.ts.
+-->
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:z="http://www.zotero.org/namespaces/export#"
+  xmlns:link="http://purl.org/rss/1.0/modules/link/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:bib="http://purl.org/net/biblio#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:prism="http://prismstandard.org/namespaces/1.2/basic/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:vcard="http://nwalsh.com/rdf/vCard#"
+>
+  <bib:Article rdf:about="#item_1">
+    <z:itemType>journalArticle</z:itemType>
+    <dc:title>石墨烯量子点的可控合成及其发光性质研究</dc:title>
+    <dc:date>2023-06-15</dc:date>
+    <bib:pages>1023-1031</bib:pages>
+    <dc:identifier>
+      <dcterms:URI>
+        <rdf:value>https://example.org/articles/graphene-2023</rdf:value>
+      </dcterms:URI>
+    </dc:identifier>
+    <dc:subject>
+      <dcterms:LCC>
+        <rdf:value>QC176.8</rdf:value>
+      </dcterms:LCC>
+    </dc:subject>
+    <z:language>zh-CN</z:language>
+    <z:shortTitle>石墨烯量子点</z:shortTitle>
+    <z:libraryCatalog>CNKI</z:libraryCatalog>
+    <z:displayTitle>Display title Zotero computed</z:displayTitle>
+    <dcterms:isPartOf>
+      <bib:Journal rdf:about="urn:issn:1000-3290">
+        <dc:title>物理学报</dc:title>
+        <dcterms:alternative>Acta Physica Sinica</dcterms:alternative>
+        <prism:volume>72</prism:volume>
+        <prism:number>6</prism:number>
+        <dc:identifier>ISSN 1000-3290</dc:identifier>
+        <dc:identifier>DOI 10.7498/aps.72.20230101</dc:identifier>
+      </bib:Journal>
+    </dcterms:isPartOf>
+    <bib:authors>
+      <rdf:Seq>
+        <rdf:li>
+          <foaf:Person>
+            <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+            <foaf:surname>张</foaf:surname>
+            <foaf:givenName>伟</foaf:givenName>
+          </foaf:Person>
+        </rdf:li>
+        <rdf:li>
+          <foaf:Person>
+            <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+            <foaf:surname>李</foaf:surname>
+            <foaf:givenName>秀英</foaf:givenName>
+          </foaf:Person>
+        </rdf:li>
+      </rdf:Seq>
+    </bib:authors>
+    <bib:editors>
+      <rdf:Seq>
+        <rdf:li>
+          <foaf:Person>
+            <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+            <foaf:surname>王</foaf:surname>
+            <foaf:givenName>编</foaf:givenName>
+          </foaf:Person>
+        </rdf:li>
+      </rdf:Seq>
+    </bib:editors>
+    <dc:subject>石墨烯</dc:subject>
+    <dc:subject>
+      <z:AutomaticTag>
+        <rdf:value>highlights</rdf:value>
+      </z:AutomaticTag>
+    </dc:subject>
+    <dc:relation rdf:resource="#item_4"/>
+    <link:link rdf:resource="#item_2"/>
+  </bib:Article>
+
+  <z:Attachment rdf:about="#item_2">
+    <z:itemType>attachment</z:itemType>
+    <z:path rdf:resource="files/2/graphene.pdf"/>
+    <dc:title>Full Text PDF</dc:title>
+    <dc:identifier>
+      <dcterms:URI>
+        <rdf:value>https://example.org/files/graphene.pdf</rdf:value>
+      </dcterms:URI>
+    </dc:identifier>
+    <dcterms:dateSubmitted>2023-06-16 10:00:00</dcterms:dateSubmitted>
+    <z:linkMode>1</z:linkMode>
+    <link:type>application/pdf</link:type>
+  </z:Attachment>
+
+  <bib:Memo rdf:about="#item_3">
+    <rdf:value>&lt;p&gt;A note about the article.&lt;/p&gt;</rdf:value>
+    <dc:subject>note-tag</dc:subject>
+  </bib:Memo>
+
+  <bib:Book rdf:about="#item_4">
+    <z:itemType>book</z:itemType>
+    <dc:title>量子点物理</dc:title>
+    <dc:publisher>
+      <foaf:Organization>
+        <foaf:name>科学出版社</foaf:name>
+        <vcard:adr>
+          <vcard:Address>
+            <vcard:locality>北京</vcard:locality>
+          </vcard:Address>
+        </vcard:adr>
+      </foaf:Organization>
+    </dc:publisher>
+    <bib:editors>
+      <rdf:Seq>
+        <rdf:li>
+          <foaf:Person>
+            <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+            <foaf:surname>陈</foaf:surname>
+            <foaf:givenName>编</foaf:givenName>
+          </foaf:Person>
+        </rdf:li>
+      </rdf:Seq>
+    </bib:editors>
+  </bib:Book>
+
+  <rdf:Description rdf:about="#item_5">
+    <z:itemType>conferencePaper</z:itemType>
+    <dc:title>数字图书馆的语义互操作</dc:title>
+    <dcterms:isPartOf>
+      <bib:Journal>
+        <dc:title>会议论文集</dc:title>
+        <prism:number>C1</prism:number>
+      </bib:Journal>
+    </dcterms:isPartOf>
+    <bib:presentedAt>
+      <bib:Conference>
+        <dc:title>第十二届中国数字图书馆建设与发展研讨会</dc:title>
+      </bib:Conference>
+    </bib:presentedAt>
+    <bib:authors>
+      <rdf:Seq>
+        <rdf:li>
+          <foaf:Person>
+            <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+            <foaf:surname>赵</foaf:surname>
+            <foaf:givenName>一</foaf:givenName>
+          </foaf:Person>
+        </rdf:li>
+      </rdf:Seq>
+    </bib:authors>
+  </rdf:Description>
+
+  <z:Collection rdf:about="#collection_1">
+    <dc:title>Reading list</dc:title>
+    <dcterms:hasPart rdf:resource="#item_1"/>
+    <dcterms:hasPart rdf:resource="#item_4"/>
+  </z:Collection>
+
+  <!-- A standalone note: unlike a child note, Zotero gives it a z:itemType. -->
+  <bib:Memo rdf:about="#item_6">
+    <z:itemType>note</z:itemType>
+    <rdf:value>&lt;p&gt;A standalone note.&lt;/p&gt;</rdf:value>
+    <dc:subject>standalone-tag</dc:subject>
+  </bib:Memo>
+
+  <!--
+    Zotero uses the item URL as the RDF subject when the item has no ISBN and
+    the URL is not already taken, so referencing it needs the URL, not
+    `#item_N`.
+  -->
+  <bib:Document rdf:about="https://example.org/webpage">
+    <z:itemType>webpage</z:itemType>
+    <dc:title>Example page</dc:title>
+    <dc:identifier>
+      <dcterms:URI>
+        <rdf:value>https://example.org/webpage</rdf:value>
+      </dcterms:URI>
+    </dc:identifier>
+    <dcterms:isPartOf>
+      <z:Website>
+        <dc:title>Example site</dc:title>
+      </z:Website>
+    </dcterms:isPartOf>
+    <bib:authors>
+      <rdf:Seq>
+        <rdf:li>
+          <foaf:Person>
+            <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+            <foaf:surname>Doe</foaf:surname>
+            <foaf:givenName>Jane</foaf:givenName>
+          </foaf:Person>
+        </rdf:li>
+      </rdf:Seq>
+    </bib:authors>
+  </bib:Document>
+</rdf:RDF>

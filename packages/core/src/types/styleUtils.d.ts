@@ -1,0 +1,182 @@
+import type { ScriptItem } from "./style";
+import type { Unit, UnitUtils } from "./unit";
+
+/**
+ * Language selector for multilingual helpers. Pass a single BCP-47-style tag
+ * (e.g. `"en"`, `"zh-CN"`) or an ordered array of preferences. Tags are matched
+ * leniently — lowercased with `_` treated as `-`, and canonicalized when the
+ * runtime knows them — so script and variant subtags (`ca-ES-valencia`,
+ * `en-150`) are accepted here even though the dialog's own validation is
+ * stricter. A bare language code also matches its regional variants (and vice
+ * versa), e.g. `"zh"` matches `"zh-CN"`.
+ */
+export type MultilingualLanguage = string | readonly string[];
+
+export type ExtraValueMode = "string" | "array";
+/**
+ * Extra-field key/value map. Keys are normalized to kebab-case at item
+ * conversion time (e.g. "My Key" / "AuthorID" become "my-key" / "author-id").
+ */
+export type ExtraValueItem = {
+  readonly extra?: Readonly<Record<string, string | readonly string[]>>;
+};
+/**
+ * Read a value from `item.extra`. The `key` must be the normalized
+ * kebab-case form produced at item conversion time; query-time normalization
+ * is not performed.
+ */
+export type GetExtraValue = {
+  (item: ExtraValueItem, key: string): string;
+  (item: ExtraValueItem, key: string, mode: "string"): string;
+  (item: ExtraValueItem, key: string, mode: "array"): string[];
+};
+export type DateParts = {
+  /** Four-digit zero-padded year, e.g. `"2024"`. */
+  year: string;
+  /** Two-digit month (01-12), or `""` when the source has no month. */
+  month: string;
+  /** Two-digit day (01-31), or `""` when the source has no day. */
+  day: string;
+};
+/**
+ * Parse a date and hand its parts to `callback`.
+ *
+ * The runtime understands `YYYY-MM-DD`/`YYYY.MM.DD`/`YYYY/MM/DD`, `YYYY-MM`,
+ * a bare year, day-first slash dates, English month names ("Jan 5, 2024"),
+ * and Chinese forms (`2024年1月5日`). A numeric `value` is treated as a UTC
+ * timestamp. When parsing succeeds the callback result is returned;
+ * otherwise the original input is returned unchanged.
+ */
+export type FormatDate = <T>(
+  value: string | number,
+  callback: (parts: DateParts) => T,
+) => T | string;
+
+/**
+ * Additional utilities injected into the style sandbox: the {@link UnitUtils}
+ * builders plus the readers and helpers below. The `read*`/multilingual
+ * helpers are async and return Promises; everything else is synchronous.
+ *
+ * The sandbox also provides `console`:
+ *
+ * - `log` / `debug` / `trace` (also `dir`, `dirxml`, `table`) are tracing
+ *   output: a stream that may be dropped, budgeted per run and never kept.
+ * - `info` / `warn` / `error` are findings: they are kept on the style instance
+ *   (`style.diagnostics`) and reach a host's console. A style that can continue
+ *   reports here instead of throwing.
+ * - `assert(condition, ...)` reports like `error` when the condition is false.
+ * - `count`, `time`, `group`, `clear` and friends exist and do nothing.
+ */
+export type StyleUtils = UnitUtils & {
+  // async
+  /**
+   * Read a file through the host's `readFile` capability as raw bytes.
+   * `relPath` is resolved by the host; which directory, what traversal rules
+   * and whether a size limit applies are the host's policy
+   * (`dev/hostIntegration.md`, capabilities).
+   */
+  readBytes: (relPath: string, options?: ReadOptions) => Promise<Uint8Array>;
+  /**
+   * Read a UTF-8 text file through the host's `readFile` capability.
+   * The path and size policy are the host's, as for {@link readBytes}.
+   */
+  readText: (relPath: string, options?: ReadUTF8Options) => Promise<string>;
+  /**
+   * Read and parse JSON through the host's `readFile` capability.
+   * The path and size policy are the host's, as for {@link readBytes}.
+   */
+  readJSON: <T = unknown>(
+    relPath: string,
+    options?: ReadUTF8Options,
+  ) => Promise<T>;
+  /**
+   * Resolve every item that is related to `item` through the Banyan
+   * "multilingual item" relation. Returns an empty array when the item is
+   * not part of any multilingual group. Items come back as the same safe
+   * readonly views used by `contexts`.
+   */
+  getMultilingualItems: <T extends ScriptItem = ScriptItem>(
+    item: T,
+  ) => Promise<readonly T[]>;
+  /**
+   * Pick the entry of `item`'s multilingual group that best matches
+   * `language` (see {@link MultilingualLanguage}). Selectors are tried in
+   * order, and within one selector an exact language tag wins over the
+   * bare-code/variant fallback; `item` itself is preferred over its siblings,
+   * and the rest is settled by tag then item ID, so the result never depends on
+   * relation order. Unmatched requests fall back to the source item. Throws
+   * when `language` resolves to an empty list. Returns the same safe readonly
+   * views used by `contexts`.
+   */
+  getMultilingualItem: <T extends ScriptItem = ScriptItem>(
+    item: T,
+    language: MultilingualLanguage,
+  ) => Promise<T>;
+  // sync
+  /** Generate a random RFC 4122 version 4 UUID string. */
+  uuid: () => string;
+  /**
+   * Read a value from the parsed `item.extra` map using its normalized
+   * kebab-case `key`. Default mode returns the first value as a string
+   * (`""` when missing); mode `"array"` returns a string array (`[]` when
+   * missing). Keys must already be normalized — see {@link ExtraValueItem}.
+   */
+  getExtraValue: GetExtraValue;
+  /**
+   * Parse restricted markup — for example a `format:"rich"` parameter value or
+   * markup received from an external source — into one Unit. A structured `RichText` is
+   * already a Unit and needs no conversion.
+   * Recognized tags are the same ones generate output accepts
+   * (`b`/`strong`, `i`/`em`, `sup`, `sub`, `a`, `span`, `br`, `sc`). A value
+   * with no recognized tag stays literal text; once one is present, unknown
+   * elements are dropped while their text is kept. `nocase` spans and `sc`
+   * are resolved into casing at this point, not preserved as markup.
+   * Use `unitToHtml` for the other direction.
+   */
+  htmlToUnit: (html: string) => Unit;
+  /**
+   * Serialize a Unit to restricted markup, escaping text and filtering link
+   * protocols. Intended for debugging, tests, string sinks and external
+   * interfaces; normal citation output is already a Unit and does not need it.
+   * Round-trips the visual marks `htmlToUnit` can represent; casing that was
+   * resolved while parsing (`nocase`, `sc`) comes back as characters.
+   */
+  unitToHtml: (unit: Unit) => string;
+  /**
+   * Parse a date and feed its `{ year, month, day }` parts to `callback`,
+   * returning the callback result, or the untouched input when the value
+   * cannot be parsed. See {@link FormatDate} for accepted formats.
+   */
+  formatDate: FormatDate;
+  /**
+   * Wrap a plain object into a readonly view where reading any key returns
+   * a string: missing keys and non-string values yield `""`, and writes
+   * are silently ignored. Same missing-value semantics as the sandbox data
+   * views.
+   */
+  safeRecord: (object: Record<string, unknown>) => Record<string, string>;
+  /** Coerce a value to string: strings/numbers/booleans keep their literal form, everything else becomes `""`. */
+  safeString: (value: unknown) => string;
+};
+
+/**
+ * Options for `readBytes`, mirroring Gecko's `IOUtils.read`. Declared
+ * locally so the style-facing typings stay self-contained outside a
+ * Zotero/Firefox ambient type environment.
+ */
+export type ReadOptions = ReadUTF8Options & {
+  /** Read at most this many bytes (`null` means no limit). */
+  maxBytes?: number | null;
+  /** Start reading from this byte offset. */
+  offset?: number;
+};
+
+/**
+ * Options for `readText`/`readJSON`, mirroring Gecko's `IOUtils.readUTF8`.
+ * Declared locally so the style-facing typings stay self-contained outside
+ * a Zotero/Firefox ambient type environment.
+ */
+export type ReadUTF8Options = {
+  /** Decompress gzip-compressed file content before reading. */
+  decompress?: boolean;
+};
