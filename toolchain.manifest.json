@@ -1,0 +1,27 @@
+{
+  "toolchainRevision": "a757b75818cc3a906c1aace058302063ad845658",
+  "contractRevision": "bda8a4a13fb5769caa11c583eccc18c18f2b5644c3f858baab1a07c5ac1aadfd",
+  "schemaRevision": "zotero-45+csl-0ee62cac6648+cslm-e507b2fb131c",
+  "supportedNode": "^22.18.0 || >=24",
+  "supportedEslint": ">=9 <11",
+  "packages": {
+    "@banyan/core": "0.1.0",
+    "@banyan/style-contract": "0.1.0",
+    "eslint-plugin-banyan-style": "0.1.0",
+    "@banyan/style-test-kit": "0.1.0"
+  },
+  "artifacts": {
+    "contractArtifact": "banyan-style-contract-0.1.0.tgz",
+    "coreArtifact": "banyan-core-0.1.0.tgz",
+    "lintArtifact": "eslint-plugin-banyan-style-0.1.0.tgz",
+    "testKitArtifact": "banyan-style-test-kit-0.1.0.tgz",
+    "lintBundle": "eslint-plugin-banyan-style.mjs",
+    "lintMetadata": "eslint-plugin-banyan-style.build.json",
+    "contractArtifactSha256": "c286389a2ac5db3a64005ad2c9fbdac871cac65c4cc7112bf00fefac01077f28",
+    "coreArtifactSha256": "5ede92c5a6ac6eaa7279a3d90bc19feff66cbc3885cd4caf3844acb27f0da650",
+    "lintArtifactSha256": "edfe6e5bfd87bdc3aacf1647c468e0847a1a33dfc244e2a96c73d5a342d16462",
+    "testKitArtifactSha256": "35a56426b82fb094505ecd9f590b63bf4e3c667e3be14a5028723855d217a81f",
+    "lintBundleSha256": "4565b3260b8ebbf99e4dbfdd2615ff0918bf1618bd6b836aa087aec9e5338e25",
+    "lintMetadataSha256": "3cf847995746c9fed793a3706363eb3a444a81ad370bdbe72ec6e3091620da54"
+  }
+}
