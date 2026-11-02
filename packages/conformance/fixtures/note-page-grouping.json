@@ -1,0 +1,28 @@
+{
+  "id": "note-page-grouping",
+  "description": "A note-citation style groups citations by context.page without an endnote branch. The runtime reports nothing and the linter reports the note-numbering advisory alone.",
+  "source": [
+    "const INFO = { id: 'note-page-grouping', title: 'Note page grouping', description: '', citationType: 'note-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-11-12' };",
+    "function noteNumberOf(contextIndex) {",
+    "  const context = contexts[contextIndex];",
+    "  const page = Number(context.page);",
+    "  let count = 0;",
+    "  for (let index = 0; index <= contextIndex; index += 1) {",
+    "    if (Number(contexts[index].page) === page) {",
+    "      count += 1;",
+    "    }",
+    "  }",
+    "  return count;",
+    "}",
+    "function generate() {",
+    "  return {",
+    "    citations: contexts.map((context, index) => ({ id: context.id, content: String(noteNumberOf(index)) })),",
+    "    bibliography: [],",
+    "  };",
+    "}"
+  ],
+  "expect": {
+    "runtime": [],
+    "lint": ["lint.note.page-grouping"]
+  }
+}

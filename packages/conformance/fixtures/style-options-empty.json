@@ -1,0 +1,13 @@
+{
+  "id": "style-options-empty",
+  "description": "An empty STYLE_OPTIONS array declares nothing; both executors report it and ignore the export.",
+  "source": [
+    "const INFO = { id: 'options', title: 'Options', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_OPTIONS = [];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": ["param.style-options.empty"],
+    "lint": ["param.style-options.empty"]
+  }
+}

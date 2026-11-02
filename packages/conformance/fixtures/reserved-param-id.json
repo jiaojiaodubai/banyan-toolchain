@@ -1,0 +1,13 @@
+{
+  "id": "reserved-param-id",
+  "description": "A reserved declaration key cannot be a parameter id; runtime skips it and lint rejects it.",
+  "source": [
+    "const INFO = { id: 'reserved', title: 'Reserved', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_OPTIONS = [{ id: '__proto__', kind: 'state', label: 'X', defaultValue: false }];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": ["declaration.id.reserved"],
+    "lint": ["declaration.id.reserved"]
+  }
+}

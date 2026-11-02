@@ -1,0 +1,17 @@
+{
+  "id": "dependency-export-not-array",
+  "description": "STYLE_DEPENDENCIES must be an array; the runtime ignores it and lint rejects it.",
+  "source": [
+    "const INFO = { id: 'dep', title: 'Dep', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_DEPENDENCIES = 'guest';",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": [
+      "dependency.export.not-array"
+    ],
+    "lint": [
+      "dependency.export.not-array"
+    ]
+  }
+}

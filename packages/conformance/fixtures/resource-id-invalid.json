@@ -1,0 +1,17 @@
+{
+  "id": "resource-id-invalid",
+  "description": "A resource id is the asset's file name: lowercase letters, digits and single hyphens, no extension. The entry is dropped and lint rejects it.",
+  "source": [
+    "const INFO = { id: 'dep', title: 'Dep', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_RESOURCES = [{ id: 'Terms.json', format: 'json' }];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": [
+      "resource.id.invalid"
+    ],
+    "lint": [
+      "resource.id.invalid"
+    ]
+  }
+}

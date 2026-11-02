@@ -1,0 +1,48 @@
+{
+  "contexts": [
+    {
+      "id": "citation-1",
+      "cites": [
+        {
+          "item": "ITEM0001",
+          "params": {
+            "locator": "1025"
+          }
+        },
+        {
+          "item": "ITEM0003"
+        }
+      ]
+    },
+    {
+      "id": "citation-2",
+      "cites": [
+        {
+          "item": "ITEM0002"
+        }
+      ],
+      "params": {
+        "locator": "第 3 章"
+      }
+    },
+    {
+      "id": "citation-3",
+      "cites": [
+        {
+          "item": "ITEM0006"
+        }
+      ]
+    },
+    {
+      "id": "citation-4",
+      "cites": [
+        {
+          "item": "ITEM0005"
+        },
+        {
+          "item": "ITEM0007"
+        }
+      ]
+    }
+  ]
+}

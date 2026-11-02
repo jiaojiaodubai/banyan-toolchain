@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Hand-authored on purpose: the generated fixtures only contain what the
+  testkit's serializer (and therefore Zotero's exporter) emits. This document
+  covers the RDF/XML shapes a human or another tool may produce:
+
+  - alias namespace prefixes (`r:`, `zz:`, `d:`, `dc2:`, `b:`, `f:`);
+  - `rdf:parseType="Resource"` for an anonymous publisher;
+  - classes given as `rdf:type` properties instead of typed node elements;
+  - the section -> container -> series nesting Zotero writes.
+-->
+<r:RDF
+  xmlns:r="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:zz="http://www.zotero.org/namespaces/export#"
+  xmlns:d="http://purl.org/dc/elements/1.1/"
+  xmlns:dc2="http://purl.org/dc/terms/"
+  xmlns:b="http://purl.org/net/biblio#"
+  xmlns:f="http://xmlns.com/foaf/0.1/"
+>
+  <r:Description r:about="#alias_1">
+    <zz:itemType>book</zz:itemType>
+    <zz:key>ALIAS001</zz:key>
+    <d:title>Alias prefixes still parse</d:title>
+    <d:date>1999</d:date>
+    <d:publisher r:parseType="Resource">
+      <f:name>Alias Press</f:name>
+    </d:publisher>
+    <b:authors>
+      <r:Seq>
+        <r:li>
+          <f:Person>
+            <f:surname>Anonymous</f:surname>
+          </f:Person>
+        </r:li>
+      </r:Seq>
+    </b:authors>
+  </r:Description>
+
+  <r:Description r:about="#alias_2">
+    <r:type r:resource="http://purl.org/net/biblio#Article"/>
+    <zz:itemType>journalArticle</zz:itemType>
+    <zz:key>ALIAS002</zz:key>
+    <d:title>Section, container and series nest like Zotero writes them</d:title>
+    <dc2:isPartOf>
+      <r:Description>
+        <r:type r:resource="http://purl.org/net/biblio#Part"/>
+        <d:title>Part One</d:title>
+        <dc2:isPartOf>
+          <r:Description>
+            <r:type r:resource="http://purl.org/net/biblio#Journal"/>
+            <d:title>Journal of Nesting</d:title>
+            <dc2:isPartOf>
+              <r:Description>
+                <r:type r:resource="http://purl.org/net/biblio#Series"/>
+                <d:title>Nesting Series</d:title>
+              </r:Description>
+            </dc2:isPartOf>
+          </r:Description>
+        </dc2:isPartOf>
+      </r:Description>
+    </dc2:isPartOf>
+  </r:Description>
+</r:RDF>

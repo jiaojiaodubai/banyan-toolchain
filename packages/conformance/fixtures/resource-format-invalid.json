@@ -1,0 +1,17 @@
+{
+  "id": "resource-format-invalid",
+  "description": "A resource format must be json or text; the entry is dropped and lint rejects it.",
+  "source": [
+    "const INFO = { id: 'dep', title: 'Dep', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_RESOURCES = [{ id: 'words', format: 'yaml' }];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": [
+      "resource.format.invalid"
+    ],
+    "lint": [
+      "resource.format.invalid"
+    ]
+  }
+}

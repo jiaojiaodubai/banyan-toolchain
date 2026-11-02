@@ -1,0 +1,13 @@
+{
+  "id": "unknown-item-type",
+  "description": "An item type outside the generated schema is ignored at runtime and rejected by lint.",
+  "source": [
+    "const INFO = { id: 'types', title: 'Types', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const ITEM_FIELD_VALIDATORS = { bookk: [{ description: 'Typo', check: () => true }] };",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": ["validator.group.unknown-item-type"],
+    "lint": ["validator.group.unknown-item-type"]
+  }
+}

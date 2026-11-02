@@ -1,0 +1,23 @@
+{
+  "contexts": [
+    {
+      "id": "citation-1",
+      "cites": [
+        {
+          "item": "EXT0001"
+        }
+      ]
+    },
+    {
+      "id": "citation-2",
+      "cites": [
+        {
+          "item": "EXT0002"
+        },
+        {
+          "item": "EXT0003"
+        }
+      ]
+    }
+  ]
+}

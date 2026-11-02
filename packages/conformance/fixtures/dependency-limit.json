@@ -1,0 +1,17 @@
+{
+  "id": "dependency-limit",
+  "description": "At most four dependencies are kept; the runtime truncates with a warning and lint rejects the overflow.",
+  "source": [
+    "const INFO = { id: 'dep', title: 'Dep', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_DEPENDENCIES = ['a', 'b', 'c', 'd', 'e'];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": [
+      "dependency.limit"
+    ],
+    "lint": [
+      "dependency.limit"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "resource-validate-invalid",
+  "description": "A resource validate callback is no longer accepted: assets are publicly maintained data. The key is ignored with a warning and lint rejects it.",
+  "source": [
+    "const INFO = { id: 'dep', title: 'Dep', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_RESOURCES = [{ id: 'words', format: 'json', validate: 'yes' }];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": [
+      "resource.validate.invalid"
+    ],
+    "lint": [
+      "resource.validate.invalid"
+    ]
+  }
+}

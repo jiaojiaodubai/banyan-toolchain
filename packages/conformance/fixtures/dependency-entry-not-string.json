@@ -1,0 +1,17 @@
+{
+  "id": "dependency-entry-not-string",
+  "description": "STYLE_DEPENDENCIES entries are style ids; the runtime skips a non-string entry and lint rejects it.",
+  "source": [
+    "const INFO = { id: 'dep', title: 'Dep', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_DEPENDENCIES = [42];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": [
+      "dependency.entry.not-string"
+    ],
+    "lint": [
+      "dependency.entry.not-string"
+    ]
+  }
+}
