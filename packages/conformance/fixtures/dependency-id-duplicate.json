@@ -1,0 +1,17 @@
+{
+  "id": "dependency-id-duplicate",
+  "description": "A dependency id may appear only once; the runtime keeps the first and lint rejects the repeat.",
+  "source": [
+    "const INFO = { id: 'dep', title: 'Dep', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_DEPENDENCIES = [{ id: 'guest' }, { id: 'guest' }];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": [
+      "dependency.id.duplicate"
+    ],
+    "lint": [
+      "dependency.id.duplicate"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/types/**", "src/schema/*.json"],
+  "reporter": ["text", "lcov"],
+  "all": true,
+  "clean": true
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Banyan simple item database",
+  "description": "A list of Banyan-item-shaped records. Unknown properties are item fields; multilingual groups are declared at the database level.",
+  "oneOf": [{ "$ref": "#/$defs/arrayForm" }, { "$ref": "#/$defs/objectForm" }],
+  "$defs": {
+    "arrayForm": { "type": "array", "items": { "$ref": "#/$defs/record" } },
+    "objectForm": {
+      "type": "object",
+      "required": ["items"],
+      "properties": {
+        "items": { "type": "array", "items": { "$ref": "#/$defs/record" } },
+        "multilingual": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "creator": {
+      "type": "object",
+      "required": ["creatorType"],
+      "properties": {
+        "creatorType": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false,
+      "anyOf": [{ "required": ["name"] }, { "required": ["lastName"] }]
+    },
+    "record": {
+      "type": "object",
+      "required": ["itemType"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "itemType": { "type": "string", "minLength": 1 },
+        "creators": { "type": "array", "items": { "$ref": "#/$defs/creator" } },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "extra": {
+          "type": "object",
+          "additionalProperties": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "number" },
+              {
+                "type": "array",
+                "items": {
+                  "oneOf": [{ "type": "string" }, { "type": "number" }]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": { "type": ["string", "number"] }
+    }
+  }
+}

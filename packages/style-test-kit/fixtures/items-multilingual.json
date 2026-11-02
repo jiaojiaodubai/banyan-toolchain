@@ -1,0 +1,89 @@
+{
+  "items": [
+    {
+      "id": "MULTI001",
+      "itemType": "journalArticle",
+      "title": "Multilingual citation practice",
+      "date": "2022",
+      "publicationTitle": "Journal of Citation Studies",
+      "volume": "7",
+      "issue": "2",
+      "pages": "10-25",
+      "language": "en",
+      "extra": {
+        "language": "en"
+      },
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Lee",
+          "firstName": "Mei"
+        }
+      ],
+      "tags": ["multilingual"]
+    },
+    {
+      "id": "MULTI002",
+      "itemType": "journalArticle",
+      "title": "多语言引用实践",
+      "date": "2022",
+      "publicationTitle": "引用研究",
+      "volume": "7",
+      "issue": "2",
+      "pages": "10-25",
+      "language": "zh-CN",
+      "extra": {
+        "language": "zh-CN"
+      },
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "李",
+          "firstName": "梅"
+        }
+      ],
+      "tags": ["multilingual"]
+    },
+    {
+      "id": "MULTI003",
+      "itemType": "journalArticle",
+      "title": "多言語引用の実践",
+      "date": "2022",
+      "publicationTitle": "引用研究",
+      "volume": "7",
+      "issue": "2",
+      "pages": "10-25",
+      "language": "ja",
+      "extra": {
+        "language": "ja"
+      },
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "佐藤",
+          "firstName": "明"
+        }
+      ],
+      "tags": ["multilingual"]
+    },
+    {
+      "id": "MULTI004",
+      "itemType": "book",
+      "title": "Unrelated Book",
+      "date": "2001",
+      "publisher": "Example Press",
+      "language": "en",
+      "extra": {
+        "language": "en"
+      },
+      "creators": [
+        {
+          "creatorType": "author",
+          "lastName": "Doe",
+          "firstName": "Jane"
+        }
+      ]
+    }
+  ],
+  "multilingual": [["MULTI001", "MULTI002", "MULTI003"]]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "banyan-toolchain",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Banyan toolchain: core runtime, style contract, ESLint plugin, test kit and conformance corpus",
+  "license": "AGPL-3.0-or-later",
+  "packageManager": "pnpm@10.24.0",
+  "engines": {
+    "node": "^22.18.0 || >=24"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "build:contract": "pnpm --filter @banyan/style-contract build",
+    "build:core": "pnpm --filter @banyan/core build",
+    "build:lint": "pnpm --filter eslint-plugin-banyan-style build",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "pnpm build && pnpm test:contract && pnpm test:core && pnpm test:lint && pnpm test:test-kit && pnpm test:conformance && pnpm test:eslint10",
+    "test:contract": "pnpm --filter @banyan/style-contract test",
+    "test:core": "pnpm --filter @banyan/core test",
+    "test:lint": "pnpm --filter eslint-plugin-banyan-style test",
+    "test:test-kit": "pnpm --filter @banyan/style-test-kit test",
+    "test:conformance": "pnpm --filter @banyan/conformance test",
+    "test:eslint10": "node tools/verify-eslint10.mjs",
+    "lint": "prettier --check \"tools/**/*.mjs\" \"**/*.md\" \"*.json\" && pnpm -r --if-present lint:check",
+    "lint:fix": "prettier --write \"tools/**/*.mjs\" \"**/*.md\" \"*.json\" && pnpm -r --if-present lint:fix",
+    "gen:schema": "pnpm --filter @banyan/core gen:schema",
+    "manifest": "node tools/generate-toolchain-manifest.mjs",
+    "pack:artifacts": "node tools/pack-artifacts.mjs",
+    "parity": "pnpm --filter @banyan/conformance test",
+    "check:artifacts": "node tools/check-artifacts.mjs",
+    "check:consumers": "node tools/verify-consumer-locks.mjs",
+    "contract:revision": "node tools/contract-revision.mjs",
+    "smoke:artifacts": "node tools/smoke-artifact-consumer.mjs",
+    "check": "pnpm build && pnpm typecheck && pnpm lint && pnpm test:contract && pnpm test:core && pnpm test:lint && pnpm test:test-kit && pnpm parity && pnpm test:eslint10 && pnpm pack:artifacts && pnpm check:artifacts && pnpm smoke:artifacts"
+  },
+  "devDependencies": {
+    "@banyan/style-contract": "workspace:*",
+    "eslint10": "npm:eslint@^10.13.0",
+    "prettier": "^3.9.10"
+  }
+}

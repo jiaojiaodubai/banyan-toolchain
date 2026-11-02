@@ -1,0 +1,38 @@
+{
+  "name": "@banyan/style-contract",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared, executor-neutral contract for Banyan style declarations",
+  "license": "AGPL-3.0-or-later",
+  "author": "jiaojiaodubai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiaojiaodubai/banyan-toolchain.git",
+    "directory": "packages/style-contract"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/*.test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

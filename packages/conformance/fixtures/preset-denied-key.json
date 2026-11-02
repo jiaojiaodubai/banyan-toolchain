@@ -1,0 +1,13 @@
+{
+  "id": "preset-denied-key",
+  "description": "A preset cannot write a primary/identity key; runtime drops it and lint rejects it.",
+  "source": [
+    "const INFO = { id: 'preset', title: 'Preset', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const ITEM_FIELD_PRESETS = [{ id: 'x', fields: { extra: 'v' } }];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": ["preset.field.key.denied"],
+    "lint": ["preset.field.key.denied"]
+  }
+}
