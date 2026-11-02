@@ -1,0 +1,17 @@
+{
+  "id": "dependency-id-self",
+  "description": "A style cannot depend on itself; callStyle() would report a cycle.",
+  "source": [
+    "const INFO = { id: 'dep', title: 'Dep', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_DEPENDENCIES = ['dep'];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": [
+      "dependency.id.self"
+    ],
+    "lint": [
+      "dependency.id.self"
+    ]
+  }
+}

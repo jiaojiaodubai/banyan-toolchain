@@ -1,0 +1,13 @@
+{
+  "id": "state-default-unknown",
+  "description": "An unknown state default is reported; both executors fall back to the first state.",
+  "source": [
+    "const INFO = { id: 'unknown', title: 'Unknown', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_OPTIONS = [{ id: 'mode', kind: 'state', label: 'Mode', states: { a: 'A' }, defaultValue: 'z' }];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": ["param.state.default.invalid"],
+    "lint": ["param.state.default.invalid"]
+  }
+}

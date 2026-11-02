@@ -1,0 +1,13 @@
+{
+  "id": "states-empty",
+  "description": "An empty states object degrades to a boolean state at runtime and is rejected by lint.",
+  "source": [
+    "const INFO = { id: 'empty', title: 'Empty', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_OPTIONS = [{ id: 'mode', kind: 'state', label: 'Mode', states: {}, defaultValue: false }];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": ["param.states.empty"],
+    "lint": ["param.states.empty"]
+  }
+}

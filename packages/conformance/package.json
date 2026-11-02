@@ -1,0 +1,33 @@
+{
+  "name": "@banyan/conformance",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Canonical Banyan style fixtures and lint/runtime parity checks",
+  "license": "AGPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiaojiaodubai/banyan-toolchain.git",
+    "directory": "packages/conformance"
+  },
+  "scripts": {
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@banyan/core": "workspace:*",
+    "@banyan/style-contract": "workspace:*",
+    "@banyan/style-test-kit": "workspace:*",
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "eslint-plugin-banyan-style": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}

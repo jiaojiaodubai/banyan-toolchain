@@ -1,0 +1,222 @@
+{
+  "schema": 1,
+  "description": "HTML conformance fixture for the parseHtml capability. Each case is what a style returns as `content`, plus the RichText the core must derive from it. The allowed tags/attributes below are the whole cross-host surface: a host whose parser handles them identically renders the same output. Cases marked `caveat` pin behaviour that differs between HTML parsers (Gecko in a Zotero host, linkedom in the testkit) — they are recorded so a divergence is noticed, not assumed away.",
+  "allowed": {
+    "tags": {
+      "b": "bold mark over the text",
+      "strong": "bold mark over the text",
+      "i": "italic mark over the text",
+      "em": "italic mark over the text",
+      "sup": "script mark, value \"superscript\"",
+      "sub": "script mark, value \"subscript\"",
+      "sc": "small-caps: the text itself is rewritten into small-cap glyphs (no mark survives)",
+      "a": "link mark when href is http:, https:, doi: or a well-formed banyan://entry/<id>",
+      "span": "color / background-color from style; the nocase class suppresses text-case",
+      "br": "a newline in the text (not a mark)"
+    },
+    "attributes": {
+      "a": ["href"],
+      "span": ["style", "class"]
+    },
+    "ignoredTags": "any tag outside `tags` neither opens markup parsing nor produces a mark",
+    "markupDetection": "content that contains none of the listed tags is treated as plain text and only the entities &amp; &lt; &gt; &quot; &#39; &nbsp; are decoded"
+  },
+  "cases": [
+    {
+      "name": "plain-entities",
+      "html": "H2O &amp; CO2",
+      "text": "H2O & CO2",
+      "marks": []
+    },
+    {
+      "name": "escaped-markup-is-text",
+      "html": "&lt;b&gt;not bold&lt;/b&gt;",
+      "text": "<b>not bold</b>",
+      "marks": []
+    },
+    {
+      "name": "markup-entities",
+      "html": "<b>a &amp; b</b>",
+      "text": "a & b",
+      "marks": [{ "type": "bold", "start": 0, "end": 5, "value": true }]
+    },
+    {
+      "name": "nested-marks",
+      "html": "<b><i>x</i></b>",
+      "text": "x",
+      "marks": [
+        { "type": "bold", "start": 0, "end": 1, "value": true },
+        { "type": "italic", "start": 0, "end": 1, "value": true }
+      ]
+    },
+    {
+      "name": "sub-sup",
+      "html": "H<sub>2</sub>O<sup>+</sup>",
+      "text": "H2O+",
+      "marks": [
+        { "type": "script", "start": 1, "end": 2, "value": "subscript" },
+        { "type": "script", "start": 3, "end": 4, "value": "superscript" }
+      ]
+    },
+    {
+      "name": "line-break",
+      "html": "a<br>b",
+      "text": "a\nb",
+      "marks": []
+    },
+    {
+      "name": "br-adjacent",
+      "html": "a<br><br>b",
+      "text": "a\n\nb",
+      "marks": []
+    },
+    {
+      "name": "only-br",
+      "html": "<br>",
+      "text": "\n",
+      "marks": []
+    },
+    {
+      "name": "link-https",
+      "html": "<a href=\"https://example.org/a?x=1&amp;y=2\">t</a>",
+      "text": "t",
+      "marks": [
+        {
+          "type": "link",
+          "start": 0,
+          "end": 1,
+          "value": "https://example.org/a?x=1&y=2"
+        }
+      ]
+    },
+    {
+      "name": "link-banyan",
+      "html": "<a href=\"banyan://entry/42\">e</a>",
+      "text": "e",
+      "marks": [
+        { "type": "link", "start": 0, "end": 1, "value": "banyan://entry/42" }
+      ]
+    },
+    {
+      "name": "link-refused-scheme",
+      "html": "<a href=\"javascript:alert(1)\">t</a>",
+      "text": "t",
+      "marks": []
+    },
+    {
+      "name": "link-refused-banyan",
+      "html": "<a href=\"banyan://entry\">e</a>",
+      "text": "e",
+      "marks": []
+    },
+    {
+      "name": "illegal-nesting",
+      "html": "<b>bold<i>both</b>italic</i>",
+      "text": "boldbothitalic",
+      "marks": [
+        { "type": "bold", "start": 0, "end": 8, "value": true },
+        { "type": "italic", "start": 4, "end": 8, "value": true }
+      ],
+      "caveat": "The parser repairs the crossed tags: the italic run ends with the bold run, and the trailing 'italic' is plain. A different HTML parser may repair it differently; a Zotero host and the testkit are expected to agree because both hand the same DOM shape to the core."
+    },
+    {
+      "name": "unknown-tag",
+      "html": "<u>under</u>",
+      "text": "<u>under</u>",
+      "marks": [],
+      "caveat": "`<u>` is not in the allowed tag list, so the content never enters markup parsing and stays literal text."
+    },
+    {
+      "name": "script-content",
+      "html": "<span>x</span><script>alert(1)</script>",
+      "text": "xalert(1)",
+      "marks": [],
+      "caveat": "Script text is walked as a text node: it is never executed (the style context has no DOM or globals) but it does appear in the output."
+    },
+    {
+      "name": "span-color",
+      "html": "<span style=\"color:#c00\">red</span>",
+      "text": "red",
+      "marks": [{ "type": "color", "start": 0, "end": 3, "value": "#c00" }]
+    },
+    {
+      "name": "span-background",
+      "html": "<span style=\"background-color:#ff0\">bg</span>",
+      "text": "bg",
+      "marks": [
+        { "type": "backgroundColor", "start": 0, "end": 2, "value": "#ff0" }
+      ],
+      "caveat": "`background-color` yields only the background mark; a Zotero host sees the same DOM attribute and therefore the same result."
+    },
+    {
+      "name": "span-nocase",
+      "html": "<span class=\"nocase\">miXed</span>",
+      "text": "miXed",
+      "marks": []
+    },
+    {
+      "name": "attribute-not-mark",
+      "html": "<b class=\"x\" data-y=\"1\">t</b>",
+      "text": "t",
+      "marks": [{ "type": "bold", "start": 0, "end": 1, "value": true }]
+    },
+    {
+      "name": "empty-markup",
+      "html": "<b></b>text",
+      "text": "text",
+      "marks": []
+    },
+    {
+      "name": "small-caps",
+      "html": "<sc>un</sc>",
+      "text": "\u1d1c\u0274",
+      "marks": [],
+      "caveat": "`<sc>` is baked into small-cap code points by the core, so the mark does not survive and the renderer emits plain text."
+    },
+    {
+      "name": "nbsp-in-markup",
+      "html": "<i>a&nbsp;b</i>",
+      "text": "a\u00a0b",
+      "marks": [{ "type": "italic", "start": 0, "end": 3, "value": true }],
+      "caveat": "Inside markup the HTML parser decodes `&nbsp;` to U+00A0; the plain-text path does the same."
+    },
+    {
+      "name": "nbsp-plain",
+      "html": "a&nbsp;b",
+      "text": "a\u00a0b",
+      "marks": []
+    },
+    {
+      "name": "entities-named",
+      "html": "caf&eacute; &amp; more",
+      "text": "café & more",
+      "marks": []
+    },
+    {
+      "name": "entities-numeric",
+      "html": "&#65;&#x42;",
+      "text": "AB",
+      "marks": []
+    },
+    {
+      "name": "entity-out-of-range",
+      "html": "&#x110000;",
+      "text": "&#x110000;",
+      "marks": [],
+      "caveat": "A code point outside the Unicode range stays literal text; the core never emits a replacement character."
+    },
+    {
+      "name": "pseudo-tag-is-text",
+      "html": "1 <b and 2 > 1",
+      "text": "1 <b and 2 > 1",
+      "marks": [],
+      "caveat": "A start tag without a closing tag is not treated as markup, so prose containing `<` and `>` survives verbatim."
+    },
+    {
+      "name": "entities-in-markup",
+      "html": "<b>bold</b> &copy;",
+      "text": "bold ©",
+      "marks": [{ "type": "bold", "start": 0, "end": 4, "value": true }]
+    }
+  ]
+}

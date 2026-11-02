@@ -1,0 +1,13 @@
+{
+  "id": "empty-validator-group",
+  "description": "An empty checker group produces no executable checker; both executors report it.",
+  "source": [
+    "const INFO = { id: 'group', title: 'Group', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const ITEM_FIELD_VALIDATORS = { book: [] };",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": ["validator.group.empty"],
+    "lint": ["validator.group.empty"]
+  }
+}

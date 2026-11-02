@@ -1,0 +1,17 @@
+{
+  "id": "resource-limit",
+  "description": "At most eight resources are kept; the runtime truncates with a warning and lint rejects the overflow.",
+  "source": [
+    "const INFO = { id: 'dep', title: 'Dep', description: '', citationType: 'intext-citation', creator: [], tags: [], documentation: [], license: 'MIT', updated: '2026-01-01' };",
+    "const STYLE_RESOURCES = [{ id: 'r0', format: 'json' }, { id: 'r1', format: 'json' }, { id: 'r2', format: 'json' }, { id: 'r3', format: 'json' }, { id: 'r4', format: 'json' }, { id: 'r5', format: 'json' }, { id: 'r6', format: 'json' }, { id: 'r7', format: 'json' }, { id: 'r8', format: 'json' }];",
+    "function generate() { return { citations: [], bibliography: [] }; }"
+  ],
+  "expect": {
+    "runtime": [
+      "resource.limit"
+    ],
+    "lint": [
+      "resource.limit"
+    ]
+  }
+}
