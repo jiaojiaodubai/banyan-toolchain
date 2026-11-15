@@ -27,7 +27,7 @@ removing one is a breaking change even while the packages are private, because
 fixtures, locks and stored reports keep the string. Severity and English prose
 are not part of that contract; the identifier is.
 
-## b805c51 — 2026-11-02
+## 3612d5b — 2026-11-02
 
 The first toolchain revision and public release. Five packages make up the
 ecosystem — `@banyan/core`, `@banyan/style-contract`,
@@ -96,6 +96,9 @@ everything else is the core's.
   `plainText()` is the text a reader sees rather than the stored source, and
   `title` case keeps the spaces and skip-word positions around `nocase` and
   small-caps runs.
+- Non-standard `<sc>` and `<nc>` wrappers are not parsed as formatting. Their
+  tags are stripped and their text is kept, so unsupported markup cannot leak
+  into host output; only Zotero's canonical six marks are produced.
 - Diagnostics are data. `StyleMessage.finding` carries `diagnosticId`, a
   declaration `path` and optional `data`; `StyleMessage.code` stays the run
   phase, and thrown errors carry a closed `RuntimeCode`: `style-load`,
